@@ -3,7 +3,7 @@ import org.sql2o.*;
 
 public class Restaurant {
   private int id;
-  private String name;
+  public String name;
   private int cuisineId;
 
   public Restaurant(String name, int cuisineId) {
@@ -12,6 +12,11 @@ public class Restaurant {
   }
 
   public String getName() {
+    return name;
+  }
+
+  public String testName(String newName) {
+    name = newName;
     return name;
   }
 
@@ -63,13 +68,14 @@ public class Restaurant {
     }
   }
 
-  // public List<Review> getReviews() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "SELECT * FROM reviews where restaurantId=:restaurantId";
-  //     return con.createQuery(sql)
-  //       .addParameter("restaurantId", this.id)
-  //       .executeAndFetch(Review.class);
-  //   }
-  // }
+  public List<Review> getReviews() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM reviews where restaurantId=:restaurantId";
+      return con.createQuery(sql)
+        .addParameter("restaurantId", this.id)
+        .executeAndFetch(Review.class);
+    }
+  }
+
 
 }

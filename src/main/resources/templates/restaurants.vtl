@@ -1,0 +1,10 @@
+restaurants.vtl
+
+<h1>Restaurants:</h1>
+
+<ul>
+  #foreach ($place in $restaurants)
+    <li> $place.getId(), $place.getCuisineId(), $place.getName()</li>
+  #end
+
+</ul>

@@ -68,4 +68,16 @@ public class RestaurantTest {
     assertTrue(myRestaurant.equals(savedRestaurant));
   }
 
+  @Test
+  public void getReviews_retrievesAllReviewsFromDataBase_reviewsList() {
+    Restaurant myRestaurant = new Restaurant("Killer Burger", 1);
+    myRestaurant.save();
+    Review firstReview = new Review("Killer Burger rules", "yo but it totally does", myRestaurant.getId());
+    firstReview.save();
+    Review secondReview = new Review("Killer Burger sucks", "naw jk", myRestaurant.getId());
+    secondReview.save();
+    Review[] tasks = new Review[] { firstReview, secondReview };
+    assertTrue(myRestaurant.getReviews().containsAll(Arrays.asList(tasks)));
+  }
+
 }

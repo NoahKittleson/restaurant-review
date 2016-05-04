@@ -9,6 +9,7 @@ public class Review {
 
   public Review(String title, String text, int restaurantId) {
     this.title = title;
+    this.text = text;
     this.restaurantId = restaurantId;
   }
 
@@ -18,6 +19,10 @@ public class Review {
 
   public int getId() {
     return id;
+  }
+
+  public String getText() {
+    return text;
   }
 
   public int getRestaurantId() {
@@ -38,6 +43,7 @@ public class Review {
     } else {
       Review newReview = (Review) otherReview;
       return this.getTitle().equals(newReview.getTitle())
+      && this.getText().equals(newReview.getText())
       && this.getId() == newReview.getId()
       && this.getRestaurantId() == newReview.getRestaurantId();
     }
